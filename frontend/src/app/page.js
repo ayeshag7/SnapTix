@@ -1,5 +1,6 @@
 import { EventsDisplay } from "@/components/EventsDisplay";
 import { Hero } from "@/components/Hero";
+import { EventHighlights } from "@/components/EventHighlights";
 
 export default function Home() {
   
@@ -9,6 +10,8 @@ export default function Home() {
       <Hero/>
 
       <EventsDisplay/>
+
+      <EventHighlights/>
 
     </main>
   );
