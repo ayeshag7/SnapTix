@@ -23,18 +23,15 @@ export const Hero = () => {
   }, [images.length]);
 
   return (
-    <div className="flex flex-col md:flex-row justify-between px-4 md:px-8 pt-12">
+    <div className="flex flex-col md:flex-row justify-between pt-12">
       {/* text div */}
-      <div className="flex flex-col mt-8 md:mt-32">
-        <h1 className="text-2xl md:text-4xl font-bold text-[#003060] mb-4">
+      <div className="flex flex-col mt-8 md:mt-32 px-4 md:px-8">
+        <h1 className="text-2xl md:text-5xl font-bold text-[#003060] mb-4">
           Discover Events. Create <br />
           Memories.
         </h1>
-        <p className="text-base text-black w-48 md:w-96">
-          SnapTix brings you closer to the experiences you love. From concerts
-          and sports to arts and family-friendly events, explore and book your
-          next adventure effortlessly. Join millions of event-goers and make
-          unforgettable memories today.
+        <p className="text-lg text-black w-48 md:w-[480px]">
+        SnapTix brings you closer to the experiences you love. Whether you're a fan of thrilling concerts, exciting sports events, captivating arts and theatre, or family-friendly gatherings, we have something for everyone. Explore and book your next adventure with ease, and join millions of event-goers who trust SnapTix to create unforgettable memories. Discover the best events, secure your tickets, and get ready for experiences that last a lifetime.
         </p>
         <button className="bg-[#fe542b] text-white py-2 px-4 rounded-lg mt-8 w-48">
           Get started
