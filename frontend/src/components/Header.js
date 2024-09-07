@@ -88,7 +88,8 @@ export const Header = () => {
           </ul>
         </div>
       </div>
-      <EventSearchBar/>
+      {/* Conditionally render the EventSearchBar only on the Home page */}
+      {isActive("/") && <EventSearchBar />}
     </nav>
   );
 };

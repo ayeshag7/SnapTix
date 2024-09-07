@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import Link from 'next/link';
 import { Carousel } from './Carousel';
 
 export const EventsDisplay = () => {
@@ -37,7 +38,11 @@ export const EventsDisplay = () => {
 
   return (
     <>
-    <h1 className="text-2xl md:text-3xl font-bold mt-8 text-[#003060] z-10 px-8">Browse Events</h1>
+    <div className='flex justify-between flex-wrap px-8 items-center'>
+    <h1 className="text-2xl md:text-3xl font-bold mt-8 text-[#003060] z-10">Browse Events</h1>
+    <Link href="/events"><span className='text-[#003060] text-5xl font-bold'>→</span></Link>
+    </div>
+    
     <Carousel items={events}/>
     </>
   )
