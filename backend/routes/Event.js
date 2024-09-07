@@ -7,12 +7,12 @@ import AuthonticateUser from '../middlewares/Auth.js';
 const router = express.Router();
 
 // Route for publishing a new event (Agent only)
-router.post('/publish', AuthonticateUser, publishEvent);
+router.post('/publish', publishEvent);
 
 // Route for updating an event (Agent only)
-router.put('/update/:id', AuthonticateUser, updateEvent);
+router.put('/update/:id', updateEvent);
 
 // Route for deleting an event (Agent only)
-router.delete('/delete/:id', AuthonticateUser, deleteEvent);
+router.delete('/delete/:id', deleteEvent);
 
 export default router;

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
@@ -16,8 +16,11 @@ const PublishEventPage = () => {
     price: '',
   });
 
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+
   const datePickerRef = useRef(null); // Ref to focus DatePicker on calendar icon click
-  const fileInputRef = useRef(null);  // Ref for file input reset
+  const fileInputRef = useRef(null); // Ref for file input reset
 
   // Handle input change for text fields
   const handleInputChange = (e) => {
@@ -31,32 +34,69 @@ const PublishEventPage = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Here, you can perform API submission or any other action
-    console.log("Event Data:", formData);
+    // Clear previous messages
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
-    // Clear the form after submission
-    setFormData({
-      title: '',
-      description: '',
-      thumbnail: null,
-      startDate: new Date(),
-      time: '',
-      price: '',
-    });
+    // Create FormData object to handle file uploads
+    const data = new FormData();
+    data.append('title', formData.title);
+    data.append('description', formData.description);
+    data.append('thumbnail', formData.thumbnail);
+    data.append('date', formData.startDate.toISOString().split('T')[0]); // Format date as YYYY-MM-DD
+    data.append('time', formData.time);
+    data.append('price', formData.price);
+    data.append('createdBy', '66dbf07b899d051e6daa1f0f'); 
+console.log(data)
+    try {
+      const response = await fetch('http://localhost:4000/event/publish', {
+        method: 'POST',
+        body: data, // Use FormData object to send data
+      });
+      console.log(response)
 
-    // Clear file input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      const result = await response.json();
+
+if (result.success) {
+      // If the request was successful, show the success message and event details
+      setSuccessMessage(`Event "${result.event.title}" published successfully!`);
+
+      // Clear the form after submission
+      setFormData({
+        title: '',
+        description: '',
+        thumbnail: null,
+        startDate: new Date(),
+        time: '',
+        price: '',
+      });
+    }
+       else {
+        setErrorMessage(result.message || 'Failed to publish the event.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('An error occurred while publishing the event.');
     }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 py-12">
       <div className="w-full max-w-3xl bg-white rounded-lg p-8 border border-[#003060] shadow-md">
-        <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">Publish an Event</h2>
+        <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
+          Publish an Event
+        </h2>
+
+        {/* Success and Error Messages */}
+        {successMessage && (
+          <p className="text-green-500 text-sm mb-4">{successMessage}</p>
+        )}
+        {errorMessage && (
+          <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
+        )}
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Event Title */}
@@ -115,7 +155,9 @@ const PublishEventPage = () => {
             <div className="relative">
               <DatePicker
                 selected={formData.startDate}
-                onChange={(date) => setFormData({ ...formData, startDate: date })}
+                onChange={(date) =>
+                  setFormData({ ...formData, startDate: date })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 focus:ring-primary-600 focus:border-primary-600"
                 dateFormat="MMMM d, yyyy"
                 ref={datePickerRef} // Attach the ref to the DatePicker component
