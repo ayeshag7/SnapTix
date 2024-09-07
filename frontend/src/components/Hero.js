@@ -47,7 +47,7 @@ export const Hero = () => {
           alt="event"
           fill
           style={{ objectFit: "contain" }}
-          className="absolute inset-0 block"
+          className="absolute inset-0 block w-64 h-[576px] md:w-[480px] md:h-[584px]"
         />
       </div>
     </div>

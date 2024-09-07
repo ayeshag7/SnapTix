@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import EventSearchBar from './EventSearchBar';
 
 export const Header = () => {
   const [hidden, setHidden] = useState(true);
@@ -87,6 +88,7 @@ export const Header = () => {
           </ul>
         </div>
       </div>
+      <EventSearchBar/>
     </nav>
   );
 };
