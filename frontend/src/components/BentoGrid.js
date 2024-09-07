@@ -44,7 +44,7 @@ export const BentoGridItem = ({
         {/* Event description or additional details */}
         <div className="text-sm text-gray-600">{description}</div>
 
-        <div className="bg-black h-36 w-80 mt-6 rounded-lg overflow-hidden relative">
+        <div className="bg-black h-32 md:h-36 w-40 md:w-80 mt-6 rounded-lg overflow-hidden relative">
             <Image
             src={image}
             alt="event"

@@ -10,7 +10,7 @@ const EventSearchBar = () => {
   const [query, setQuery] = useState('');
 
   return (
-    <div className="max-w-5xl mx-auto p-4 bg-white shadow-lg rounded-md flex justify-between items-center space-x-4 mt-4 my-8">
+    <div className="max-w-5xl mx-auto p-4 bg-white shadow-lg rounded-md flex justify-between items-center space-x-4 mt-4 my-8 max-md:hidden">
       {/* Location Input */}
       <div className="flex items-center space-x-2 border border-gray-300 p-2 rounded-md w-1/4">
         <AiOutlineEnvironment className="text-[#fe542b]" size={24} />
