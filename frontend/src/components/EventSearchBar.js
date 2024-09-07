@@ -53,7 +53,7 @@ const EventSearchBar = () => {
 
       {/* Search Query Input */}
       <div className="flex items-center space-x-2 border border-gray-300 p-2 rounded-md w-1/3">
-        <AiOutlineSearch className="text-gray-500" size={24} />
+        <AiOutlineSearch className="text-[#fe542b]" size={24} />
         <input
           type="text"
           value={query}

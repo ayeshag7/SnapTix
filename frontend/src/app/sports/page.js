@@ -1,8 +1,8 @@
-import React from 'react'
-
 const page = () => {
   return (
-    <div className='min-h-screen'>page</div>
+    <main className="min-h-screen">
+
+    </main>
   )
 }
 
